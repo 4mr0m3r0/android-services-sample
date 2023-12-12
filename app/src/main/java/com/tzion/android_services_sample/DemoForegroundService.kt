@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 
-class DemoService : Service() {
+class DemoForegroundService : Service() {
 
     override fun onBind(p0: Intent?): IBinder? {
         return null

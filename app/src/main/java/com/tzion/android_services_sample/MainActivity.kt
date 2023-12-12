@@ -2,6 +2,7 @@ package com.tzion.android_services_sample
 
 import android.Manifest
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -21,8 +22,14 @@ import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat
 
 class MainActivity : ComponentActivity() {
+    private val airPlaneModeReceiver = AirPlaneModeReceiver()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        registerReceiver(
+            airPlaneModeReceiver,
+            IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED)
+        )
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             ActivityCompat.requestPermissions(
                 this,
@@ -40,8 +47,8 @@ class MainActivity : ComponentActivity() {
                     ) {
                         Button(
                             onClick = {
-                                Intent(this@MainActivity, DemoService::class.java).also {
-                                    it.action = DemoService.Actions.START.name
+                                Intent(this@MainActivity, DemoForegroundService::class.java).also {
+                                    it.action = DemoForegroundService.Actions.START.name
                                     startService(it)
                                 }
                             }
@@ -51,8 +58,8 @@ class MainActivity : ComponentActivity() {
                         Spacer(modifier = Modifier.height(20.dp))
                         Button(
                             onClick = {
-                                Intent(this@MainActivity, DemoService::class.java).also {
-                                    it.action = DemoService.Actions.STOP.name
+                                Intent(this@MainActivity, DemoForegroundService::class.java).also {
+                                    it.action = DemoForegroundService.Actions.STOP.name
                                     startService(it)
                                 }
                             }
@@ -63,5 +70,10 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(airPlaneModeReceiver)
     }
 }
