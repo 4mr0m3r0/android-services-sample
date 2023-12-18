@@ -1,4 +1,4 @@
-package com.tzion.android_services_sample
+package com.tzion.android_services_sample.broadcast
 
 import android.content.BroadcastReceiver
 import android.content.Context

@@ -19,7 +19,7 @@ Ref: Services https://developer.android.com/guide/components/fundamentals#Compon
 
 ### What types of Service are there?
 1. Foreground: https://developer.android.com/guide/components/foreground-services
-2. Background
+2. Background: https://developer.android.com/develop/background-work/background-tasks#categories_of_background_tasks
 3. Bound: https://developer.android.com/guide/components/bound-services
 
 ### Foreground Service 
