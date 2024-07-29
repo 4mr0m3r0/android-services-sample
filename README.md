@@ -1,15 +1,14 @@
 Android Services Sample
 
-# Android Platform Architecture
-<img src="https://developer.android.com/static/guide/platform/images/android-stack_2x.png" alt="Platform Architecture" width="600" height="auto">
-
 # Application Components
 * **Activities**
 * **Services**
 * **Broadcast receivers**
 * **Content providers:** https://developer.android.com/guide/topics/providers/content-providers
 
-## Services
+# Services
+<div><img src="https://developer.android.com/static/images/service_lifecycle.png" alt="Service Lifecycle" /></div>
+
 Services Overview: https://developer.android.com/guide/components/services
 > A service is a general-purpose entry point for keeping an app running in the background for all kinds 
 > of reasons. It is a component that runs in the background to perform long-running operations or to perform
@@ -17,12 +16,12 @@ Services Overview: https://developer.android.com/guide/components/services
 
 Ref: Services https://developer.android.com/guide/components/fundamentals#Components
 
-### What types of Service are there?
+## Type of Services
 1. Foreground: https://developer.android.com/guide/components/foreground-services
-2. Background: https://developer.android.com/develop/background-work/background-tasks#categories_of_background_tasks
+2. Background: https://developer.android.com/training/run-background-service/create-service
 3. Bound: https://developer.android.com/guide/components/bound-services
 
-### Foreground Service 
+## Foreground Service 
 > A foreground services performs some operation that is noticeable to the user. For example, an audio app
 > would use a foreground service to play an audio track. Foreground services must display a Notification.
 > Foreground services continue running even when the user isn't interacting with the app.
@@ -31,19 +30,17 @@ Ref: Type of Services > Foreground https://developer.android.com/guide/component
 
 <img src="https://developer.android.com/static/images/guide/components/fgs-manager.svg" alt="Foreground Service" width="600" height="auto">
 
-### Background
+Beginning with Android 14 (API level 34), an appropriate service type for each foreground service must be declared.
+https://developer.android.com/develop/background-work/services/fg-service-types
+
+## Background
 > A background service performs an operation that isn't directly noticed by the user. For example, 
 > if an app used a service to compact its storage, that would usually be a background service.
 
 Ref: Type of Services > Background https://developer.android.com/guide/components/services
 
-### Service lifecycle
-The following diagram shows on the left the lifecycle when the service is created with `startService()` 
-and on the right it shows when the service is created with `bindService()`.
-<div><img src="https://developer.android.com/static/images/service_lifecycle.png" alt="Service Lifecycle" /></div>
 
-
-## Broadcast receivers
+# Broadcast receivers
 Broadcast Overview: https://developer.android.com/guide/components/broadcasts
 > A broadcast receiver is a component that lets the system deliver events to the app outside of a regular 
 user flow so the app can respond to system-wide broadcast announcements. Because broadcast receivers 
@@ -64,7 +61,10 @@ Ref: Broadcast Receivers https://developer.android.com/guide/components/fundamen
 9. **ACTION_CONFIGURATION_CHANGED:** The current device Configuration (orientation, locale, etc) has changed.
 10. **ACTION_DATE_CHANGED:** The date has changed.
 11. **ACTION_DOCK_EVENT:** A sticky broadcast for changes in the physical docking state of the device.
-12. 
+12. **ACTION_DREAMING_STARTED:** Sent after the system starts dreaming.
+13. **ACTION_DREAMING_STOPPED:** Sent after the system stops dreaming.
+14. **ACTION_EXTERNAL_APPLICATIONS_AVAILABLE:** Resources for a set of packages (which were previously unavailable) are currently available since the media on which they exist is available.
+15. **ACTION_EXTERNAL_APPLICATIONS_UNAVAILABLE:** Resources for a set of packages are currently unavailable since the media on which they exist is unavailable.
 
 
 ## What can you find here
@@ -72,3 +72,7 @@ Ref: Broadcast Receivers https://developer.android.com/guide/components/fundamen
 |------------------------|-----------------------|-------------------|  
 | DemoForegroundService  | AirPlaneModeReceiver  |                   |  
 |                        |                       |                   |
+
+## Resources
+
+* Bound Services on Android: https://www.youtube.com/watch?v=_xNkVNaC9AI
