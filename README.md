@@ -28,10 +28,19 @@ Ref: Services https://developer.android.com/guide/components/fundamentals#Compon
 
 Ref: Type of Services > Foreground https://developer.android.com/guide/components/services
 
+> [!IMPORTANT]  
+> Only use a foreground service when your app needs to perform a tasks that is noticeable 
+> by the user, even when they're not directly interacting with the app.
+
 <img src="https://developer.android.com/static/images/guide/components/fgs-manager.svg" alt="Foreground Service" width="600" height="auto">
 
-Beginning with Android 14 (API level 34), an appropriate service type for each foreground service must be declared.
-https://developer.android.com/develop/background-work/services/fg-service-types
+> [!NOTE]  
+> Starting in Android 13, users can dismiss the notification associated with a foreground service by default, 
+> performing a swipe gesture on the notification.
+
+> [!NOTE]  
+> Beginning with Android 14 (API level 34), an appropriate service type for each foreground service must be declared.
+> https://developer.android.com/develop/background-work/services/fg-service-types
 
 ## Background
 > A background service performs an operation that isn't directly noticed by the user. For example, 
